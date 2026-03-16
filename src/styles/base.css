@@ -3,71 +3,68 @@
    ============================================================ */
 
 :root {
-  --orange: #fa0;
-  --red: red;
-  --glow-rgb: 255, 102, 0;
-  --text-color: #fa0;
-  --danger-fill-color: #f23;
-  --danger-glow-rgb: 255, 0, 0;
-  --danger-text-color: #f23;
-  --gutter-size: 8px;
-  --card-bg: #000000;
-  --card-dark: #1a1a1a;
+    --orange: #fa0;
+    --red: red;
+    --glow-rgb: 255, 102, 0;
+    --text-color: #fa0;
+    --danger-fill-color: #f23;
+    --danger-glow-rgb: 255, 0, 0;
+    --danger-text-color: #f23;
+    --gutter-size: 8px;
+    --card-bg: #000000;
+    --card-dark: #1a1a1a;
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html,
 body {
-  height: 100%;
-  background: #000000;
-  color: var(--text-color);
-  font-family: "Roboto Condensed", Arial, Helvetica, sans-serif;
-  font-size: 14px;
-  line-height: 1.4;
-  -webkit-font-smoothing: antialiased;
+    height: 100%;
+    background: #000000;
+    color: var(--text-color);
+    font-family: "Roboto Condensed", Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
 }
 
 body {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 /* Custom scrollbar — global */
+/* Apply to the whole page and specific class */
+html,
+.custom-scrollbar {
+    /* Firefox Support */
+    scrollbar-color: var(--red) #3d3d3d; /* thumb color | track color */
+    scrollbar-width: thin; /* Options: auto, thin, or none */
+}
+
+/* Chrome, Edge, Safari Support */
 ::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
+    width: 5px;
+    height: 5px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #3d3d3d;
-  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.6);
+    background: #3d3d3d;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: var(--red);
-  border-radius: 6px;
-  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.4);
+    background-color: var(--red);
+    border-radius: 10px;
+    /* Firefox doesn't support inset shadows on scrollbars,
+     so consider if you want to keep these for Webkit only */
+    border: 3px solid #3d3d3d; /* This creates "padding" around the thumb */
 }
-
-.custom-scrollbar::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  background-color: rgb(61, 61, 61);
-}
-
-.custom-scrollbar::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
-  background-color: rgb(61, 61, 61);
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: var(--red);
+::-webkit-scrollbar-thumb:hover {
+    background: #ff0000; /* Or a brighter version of your red */
 }
