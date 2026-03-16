@@ -1,11 +1,13 @@
 /* ============================================================
    index.css — Root CSS entry point
-   Import order matters: base → fonts → animations → components → variants → stripe
+   Import order: base → fonts → animations → stripe → components → variants → hex → status
    ============================================================ */
 
 @import "./base.css";
-
 @import "./animations.css";
 @import "./stripe-bar.css";
 @import "./components.css";
 @import "./variants.css";
+@import "./hex-grid.css";
+@import "./hex-shape.css";
+@import "./status.css";

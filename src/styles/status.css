@@ -1,0 +1,95 @@
+/* ============================================================
+   status.css — Status node / rib-cage layout
+   ============================================================ */
+
+.status-node {
+    --bg-url: url("../../static/images/SkewRectangle_Green.svg");
+    background-image: var(--bg-url);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+}
+
+.parent-node {
+    transform: translateX(0px);
+    rotate: -21deg !important;
+    transition: all 0.2s ease-in-out;
+    margin-left: 0px;
+    z-index: 1;
+}
+
+.parent-node.flip {
+    rotate: 21deg !important;
+}
+
+.node:hover .parent-node {
+    cursor: pointer;
+    transform: translateX(-20px);
+}
+
+.status-node.danger {
+    --bg-url: url("../../static/images/SkewRectangle_Red.svg");
+    background-image: var(--bg-url);
+}
+
+.status-node-flip {
+    background-image: url("../../static/images/SkewRectangle_Green_Flip.svg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.node-flip:hover .parent-node {
+    cursor: pointer;
+    transform: translateX(20px);
+}
+
+.status-node-flip.danger {
+    background-image: url("../../static/images/SkewRectangle_Red_Flip.svg");
+}
+
+.status-node.slide-fade-in {
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: slideFadeIn 0.5s ease-in-out forwards;
+}
+
+.status-node-flip.slide-fade-in {
+    opacity: 0;
+    transform: translateX(20px);
+    animation: slideFadeInFlip 0.5s ease-in-out forwards;
+}
+
+.slide-fade-in-flip {
+    animation: slideFadeInFlip 0.5s ease-in-out forwards;
+}
+
+.line-node {
+    width: 0%;
+    animation: slideWidth 0.5s ease-in-out forwards;
+}
+
+@keyframes slideWidth {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: calc(var(--spacing) * 24);
+    }
+}
+
+.line-central {
+    height: 0%;
+    animation: slideHeight 0.5s ease-in-out forwards;
+}
+
+@keyframes slideHeight {
+    0% {
+        height: 0%;
+    }
+    100% {
+        height: 100%;
+    }
+}

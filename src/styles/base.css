@@ -3,13 +3,13 @@
    ============================================================ */
 
 :root {
-  --orange: #ffaa00;
-  --red: #e60003;
-  --text-color: #ffaa00;
-  --danger-text-color: #ff2233;
-  --danger-fill-color: #ff2233;
+  --orange: #fa0;
+  --red: red;
   --glow-rgb: 255, 102, 0;
+  --text-color: #fa0;
+  --danger-fill-color: #f23;
   --danger-glow-rgb: 255, 0, 0;
+  --danger-text-color: #f23;
   --gutter-size: 8px;
   --card-bg: #000000;
   --card-dark: #1a1a1a;
@@ -34,6 +34,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
 /* Custom scrollbar — global */
 ::-webkit-scrollbar {
   width: 12px;
@@ -47,4 +52,22 @@ body {
   background: var(--red);
   border-radius: 6px;
   box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.4);
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: rgb(61, 61, 61);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+  background-color: rgb(61, 61, 61);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: var(--red);
 }

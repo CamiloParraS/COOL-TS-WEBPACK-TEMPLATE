@@ -2,67 +2,134 @@
    stripe-bar.css — Animated diagonal hazard stripe pattern
    ============================================================ */
 
-/* ---- Variables ---- */
-.stripe-bar-container {
-  --stripee-color: var(--orange);
-  --stripee-size: 15px;
-  --glow-color: rgba(var(--glow-rgb), 0.25);
-}
-
-.stripe-bar-container.danger {
-  --stripee-color: var(--red);
-  --glow-color: rgba(var(--danger-glow-rgb), 0.25);
-}
-
-/* ---- Wrapper ---- */
 .stripe-wrapper {
-  width: max(200vw, 2000px);
-  height: 30px;
-  overflow: hidden;
-  display: flex;
-  flex-shrink: 0;
-  margin: 0;
-  padding: 0;
-  position: relative;
+    width: max(200vw, 2000px);
+    height: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0px !important;
+    padding: 0px !important;
+    display: flex;
 }
 
-/* ---- Bar (one tile — two are placed side by side) ---- */
+.stripe-wrapper.vertical {
+    height: max(200vh, 2000px);
+    width: 30px;
+}
+
 .stripe-bar {
-  display: inline-block;
-  width: max(200vw, 2000px);
-  height: 100%;
-  background: repeating-linear-gradient(
-    -45deg,
-    var(--stripee-color) 0px,
-    var(--stripee-color) var(--stripee-size),
-    transparent var(--stripee-size),
-    transparent calc(var(--stripee-size) * 2)
-  );
-  box-shadow: 0 0 8px var(--glow-color);
-  flex-shrink: 0;
+    width: max(200vw, 2000px);
+    height: 100%;
+    display: inline-block;
+    flex-shrink: 0;
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+    margin-bottom: -5px;
+    --stripee-color: var(--orange);
+    --stripee-size: 15px;
+    --glow-color: rgba(255, 94, 0, 0.8);
+    --glow-size: 3px;
+    background-image: repeating-linear-gradient(
+        -45deg,
+        var(--glow-color) calc(-1 * var(--glow-size)),
+        var(--stripee-color) 0,
+        var(--stripee-color) calc(var(--stripee-size) - var(--glow-size) / 2),
+        var(--glow-color) calc(var(--stripee-size) + var(--glow-size) / 2),
+        transparent calc(var(--stripee-size) + var(--glow-size) / 2),
+        transparent calc(2 * var(--stripee-size)),
+        var(--glow-color) calc(2 * var(--stripee-size) - var(--glow-size))
+    );
 }
 
-/* ---- Outer container helpers ---- */
-.stripe-bar-container {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 30px;
+.stripe-bar.red {
+    --stripee-color: var(--red);
+    --stripee-size: 15px;
+    --glow-color: rgba(255, 17, 0, 0.8);
+    --glow-size: 3px;
 }
 
-/* Vertical orientation */
-.stripe-bar-container.vertical {
-  width: 30px;
-  height: 100%;
+.stripe-bar.vertical {
+    width: 100%;
+    height: max(200vw, 200vh);
+    transform: translate3d(0, 0, 0);
 }
 
-.stripe-bar-container.vertical .stripe-wrapper {
-  width: 30px;
-  height: max(200vh, 2000px);
-  flex-direction: column;
+/* ---- Standalone red stripe bar ---- */
+.stripe-bar-red {
+    width: max(200vw, 2000px);
+    height: 30px;
+    display: inline-block;
+    flex-shrink: 0;
+    margin-bottom: -5px;
+    --stripee-color: var(--red);
+    --stripee-size: 15px;
+    --glow-color: rgba(255, 17, 0, 0.8);
+    --glow-size: 3px;
+    background-image: repeating-linear-gradient(
+        -45deg,
+        var(--glow-color) calc(-1 * var(--glow-size)),
+        var(--stripee-color) 0,
+        var(--stripee-color) calc(var(--stripee-size) - var(--glow-size) / 2),
+        var(--glow-color) calc(var(--stripee-size) + var(--glow-size) / 2),
+        transparent calc(var(--stripee-size) + var(--glow-size) / 2),
+        transparent calc(2 * var(--stripee-size)),
+        var(--glow-color) calc(2 * var(--stripee-size) - var(--glow-size))
+    );
 }
 
-.stripe-bar-container.vertical .stripe-bar {
-  width: 30px;
-  height: max(200vh, 2000px);
+/* ---- Vertical stripe bars ---- */
+.stripe-bar-vertical {
+    height: max(200vw, 200vh);
+    transform: translate3d(0, 0, 0);
+    --stripee-color: var(--orange);
+    --stripee-size: 15px;
+    --glow-color: rgba(255, 94, 0, 0.8);
+    --glow-size: 3px;
+    background-image: repeating-linear-gradient(
+        45deg,
+        var(--glow-color) calc(-1 * var(--glow-size)),
+        var(--stripee-color) 0,
+        var(--stripee-color) calc(var(--stripee-size) - var(--glow-size) / 2),
+        var(--glow-color) calc(var(--stripee-size) + var(--glow-size) / 2),
+        transparent calc(var(--stripee-size) + var(--glow-size) / 2),
+        transparent calc(2 * var(--stripee-size)),
+        var(--glow-color) calc(2 * var(--stripee-size) - var(--glow-size))
+    );
+}
+
+.stripe-bar-red-vertical {
+    height: max(200vw, 200vh);
+    transform: translate3d(0, 0, 0);
+    --stripee-color: var(--red);
+    --stripee-size: 15px;
+    --glow-color: rgba(255, 17, 0, 0.8);
+    --glow-size: 3px;
+    background-image: repeating-linear-gradient(
+        45deg,
+        var(--glow-color) calc(-1 * var(--glow-size)),
+        var(--stripee-color) 0,
+        var(--stripee-color) calc(var(--stripee-size) - var(--glow-size) / 2),
+        var(--glow-color) calc(var(--stripee-size) + var(--glow-size) / 2),
+        transparent calc(var(--stripee-size) + var(--glow-size) / 2),
+        transparent calc(2 * var(--stripee-size)),
+        var(--glow-color) calc(2 * var(--stripee-size) - var(--glow-size))
+    );
+}
+
+.stripe-wrapper-vertical {
+    height: max(200vh, 2000px);
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0px !important;
+    padding: 0px !important;
+    display: flex;
+}
+
+/* ---- Full-width stripe decorators ---- */
+.stripe {
+    background-color: black;
+    width: 100vw;
+    border-top: 1px solid var(--red);
+    border-bottom: 1px solid var(--red);
+    position: fixed;
 }
