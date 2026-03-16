@@ -1,0 +1,68 @@
+/* ============================================================
+   stripe-bar.css — Animated diagonal hazard stripe pattern
+   ============================================================ */
+
+/* ---- Variables ---- */
+.stripe-bar-container {
+  --stripee-color: var(--orange);
+  --stripee-size: 15px;
+  --glow-color: rgba(var(--glow-rgb), 0.25);
+}
+
+.stripe-bar-container.danger {
+  --stripee-color: var(--red);
+  --glow-color: rgba(var(--danger-glow-rgb), 0.25);
+}
+
+/* ---- Wrapper ---- */
+.stripe-wrapper {
+  width: max(200vw, 2000px);
+  height: 30px;
+  overflow: hidden;
+  display: flex;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* ---- Bar (one tile — two are placed side by side) ---- */
+.stripe-bar {
+  display: inline-block;
+  width: max(200vw, 2000px);
+  height: 100%;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--stripee-color) 0px,
+    var(--stripee-color) var(--stripee-size),
+    transparent var(--stripee-size),
+    transparent calc(var(--stripee-size) * 2)
+  );
+  box-shadow: 0 0 8px var(--glow-color);
+  flex-shrink: 0;
+}
+
+/* ---- Outer container helpers ---- */
+.stripe-bar-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 30px;
+}
+
+/* Vertical orientation */
+.stripe-bar-container.vertical {
+  width: 30px;
+  height: 100%;
+}
+
+.stripe-bar-container.vertical .stripe-wrapper {
+  width: 30px;
+  height: max(200vh, 2000px);
+  flex-direction: column;
+}
+
+.stripe-bar-container.vertical .stripe-bar {
+  width: 30px;
+  height: max(200vh, 2000px);
+}

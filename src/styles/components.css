@@ -1,0 +1,282 @@
+/* ============================================================
+   components.css — Cards, borders, shapes, markers, badges
+   ============================================================ */
+
+/* ---- Borders ---- */
+
+.bordered {
+    border: 3px solid var(--orange);
+    border-radius: var(--gutter-size);
+}
+
+.bordered-red {
+    border: 3px solid var(--red);
+    border-radius: var(--gutter-size);
+}
+
+.bordered-red-bottom {
+    border-bottom: 3px solid var(--red);
+}
+
+.bordered-red-top {
+    border-top: 3px solid var(--red);
+}
+
+/* ---- Card ---- */
+
+.ews-card {
+    background: var(--card-bg);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+}
+
+.ews-card:hover {
+    box-shadow: 0 0 10px rgba(var(--glow-rgb), 0.15);
+}
+
+.ews-card-header {
+    color: var(--text-color);
+    position: relative;
+    font-family: "Roboto Condensed", Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 0.75rem;
+    min-height: 30px;
+    overflow: hidden;
+}
+
+.ews-card-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px;
+}
+
+.ews-card-footer {
+    color: var(--text-color);
+    font-family: "Roboto Condensed", Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    font-size: 0.625rem;
+    letter-spacing: 1px;
+    padding: 6px 12px;
+    border-radius: 0 0 var(--gutter-size) var(--gutter-size);
+}
+
+/* Custom scrollbar scoped to card content */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #3d3d3d;
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.6);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--red);
+    border-radius: 6px;
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.4);
+}
+
+/* ---- Card header label — "windowed text" over stripe ---- */
+.ews-card-header-label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.ews-card-header-label span {
+    padding: 2px 8px;
+    background: #000;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-color);
+}
+
+/* ---- Parallelogram ---- */
+
+.parallelogram {
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    transform: skew(-15deg);
+    background: var(--orange);
+    padding: 0 12px;
+    overflow: hidden;
+}
+
+.parallelogram > * {
+    transform: skew(15deg);
+    color: #000;
+    font-weight: 700;
+    font-family: "Roboto Condensed", Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+}
+
+.parallelogram.danger {
+    background: var(--red);
+}
+
+.parallelogram.danger > * {
+    color: #fff;
+}
+
+/* ---- Hex clip paths ---- */
+
+.hex-flat-top {
+    clip-path: polygon(
+        24.96% 100%,
+        0% 50%,
+        24.96% 0%,
+        74.87% 0%,
+        99.84% 50%,
+        74.87% 100%
+    );
+}
+
+.hex-pointy-top {
+    clip-path: polygon(
+        0% 25.13%,
+        50% 0%,
+        100% 25.13%,
+        100% 74.87%,
+        50% 100%,
+        0% 74.87%
+    );
+}
+
+/* ---- Hex hive cells ---- */
+
+.hex-hive {
+    position: relative;
+    width: 72px;
+    height: 83px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    font-family: "Roboto Condensed", Arial, Helvetica, sans-serif;
+    color: var(--text-color);
+    /* Clip to pointy-top hex so background-color fills the hex shape */
+    clip-path: polygon(
+        0% 25.13%,
+        50% 0%,
+        100% 25.13%,
+        100% 74.87%,
+        50% 100%,
+        0% 74.87%
+    );
+}
+
+.hex-hive.bg-hex {
+    /* Triple-layer hex: outer fill → black ring → inner fill (matches hex-shape.css style) */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 115 133'%3E%3Cpath d='M115 99.19L57.5 132.25L0 99.19L0 33.06L57.5 0L115 33.06Z' fill='%23E60003'/%3E%3Cpath d='M113.69 98.44L57.63 130.68L1.57 98.44L1.57 33.98L57.63 1.74L113.69 33.98Z' fill='black'/%3E%3Cpath d='M111.07 97.07L57.63 127.80L4.19 97.07L4.19 35.61L57.63 4.89L111.07 35.61Z' fill='%23E60003'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.hex-hive.bg-hex.yellow {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 115 133'%3E%3Cpath d='M115 99.19L57.5 132.25L0 99.19L0 33.06L57.5 0L115 33.06Z' fill='%23FFAA00'/%3E%3Cpath d='M113.69 98.44L57.63 130.68L1.57 98.44L1.57 33.98L57.63 1.74L113.69 33.98Z' fill='black'/%3E%3Cpath d='M111.07 97.07L57.63 127.80L4.19 97.07L4.19 35.61L57.63 4.89L111.07 35.61Z' fill='%23FFAA00'/%3E%3C/svg%3E");
+}
+
+.hex-hive.hex-danger {
+    filter: drop-shadow(0 0 6px rgba(var(--danger-glow-rgb), 0.8));
+    background-color: rgba(var(--danger-glow-rgb), 0.2);
+}
+
+.hex-hive.hex-warn {
+    filter: drop-shadow(0 0 6px rgba(var(--glow-rgb), 0.8));
+    background-color: rgba(var(--glow-rgb), 0.15);
+}
+
+.hex-honeycomb {
+    position: relative;
+}
+
+/* ---- Status node / rib-cage layout ---- */
+
+.status-node {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 40'%3E%3Cpolygon points='10,0 120,0 110,40 0,40' fill='none' stroke='%2300CC44' stroke-width='2'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 120px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    color: #00cc44;
+}
+
+.status-node.danger {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 40'%3E%3Cpolygon points='10,0 120,0 110,40 0,40' fill='none' stroke='%23E60003' stroke-width='2'/%3E%3C/svg%3E");
+    color: var(--red);
+}
+
+.status-node-flip {
+    transform: scaleX(-1);
+}
+
+.parent-node {
+    transform: rotate(-21deg);
+}
+
+.parent-node.flip {
+    transform: rotate(21deg);
+}
+
+.line-node {
+    height: 2px;
+    background: #00cc44;
+    animation: slideWidth 0.5s ease forwards;
+}
+
+.line-central {
+    width: 2px;
+    background: var(--red);
+    animation: slideHeight 0.5s ease forwards;
+}
+
+.slide-fade-in {
+    animation: slideFadeIn 0.4s ease forwards;
+}
+
+/* ---- Marker / badge helpers ---- */
+
+.marker-daerah {
+    background: var(--red);
+    color: #000;
+    font-family: "Roboto Condensed", Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    font-size: 0.625rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 10px;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+}
+
+/* Ensure glow isn't clipped and give status hexes higher stacking order */
+.hex-honeycomb {
+    overflow: visible;
+}
+
+.hex-hive {
+    position: relative; /* ensure z-index works reliably */
+    z-index: 0;
+}
+
+/* push warning/danger above neighbors; drop-shadow follows the clip-path shape */
+.hex-hive.hex-warn,
+.hex-hive.hex-danger {
+    z-index: 2;
+}

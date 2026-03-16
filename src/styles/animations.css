@@ -1,0 +1,110 @@
+/* ============================================================
+   animations.css — @keyframes + animation utility classes
+   ============================================================ */
+
+/* ---- Keyframes ---- */
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+@keyframes showPopUp {
+  from { opacity: 0; transform: scale(0.5); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes closePopUp {
+  from { opacity: 1; transform: scale(1); }
+  to   { opacity: 0; transform: scale(0.5); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-100%); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes verticalReveal {
+  from { transform: scaleY(0); }
+  to   { transform: scaleY(1); }
+}
+
+@keyframes glowEffect {
+  0%, 100% { box-shadow: 0 0 8px 2px  rgba(var(--danger-glow-rgb), 0.6); }
+  50%       { box-shadow: 0 0 20px 6px rgba(var(--danger-glow-rgb), 0.9); }
+}
+
+@keyframes stripeAnimation {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes stripeAnimationReverse {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes stripeAnimationVertical {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }
+}
+
+@keyframes stripeAnimationVerticalReverse {
+  from { transform: translateY(-50%); }
+  to   { transform: translateY(0); }
+}
+
+@keyframes btnAlertPulse {
+  0%, 100% { background: var(--red); box-shadow: 0 0 8px rgba(var(--danger-glow-rgb), 0.5); }
+  50%       { background: #ff4455;   box-shadow: 0 0 20px rgba(var(--danger-glow-rgb), 0.9); }
+}
+
+@keyframes slideWidth {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+@keyframes slideHeight {
+  from { height: 0%; }
+  to   { height: 100%; }
+}
+
+@keyframes slideFadeIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ---- Utility classes ---- */
+
+.blink           { animation: blink 1s infinite; }
+.blink-fast      { animation: blink 0.1s infinite; }
+
+.show-pop-up     { animation: showPopUp  0.3s ease forwards; }
+.close-pop-up    { animation: closePopUp 0.3s ease forwards; }
+
+.slide-in-left   { animation: slideInLeft 0.5s ease forwards; }
+.fade-in         { animation: fadeIn 0.5s ease forwards; }
+.vertical-reveal { animation: verticalReveal 0.3s ease forwards; transform-origin: top; }
+.glow-effect     { animation: glowEffect 1.5s ease-in-out infinite; }
+
+.loop-stripe              { animation: stripeAnimation         var(--anim-duration, 10s) linear infinite; }
+.loop-stripe-reverse      { animation: stripeAnimationReverse  var(--anim-duration, 10s) linear infinite; }
+.loop-stripe-vertical     { animation: stripeAnimationVertical var(--anim-duration, 10s) linear infinite; }
+.loop-stripe-vertical-reverse { animation: stripeAnimationVerticalReverse var(--anim-duration, 10s) linear infinite; }
+
+/* Duration overrides */
+.animation-fast    { animation-duration: 0.5s !important; }
+.anim-duration-5   { --anim-duration: 5s; }
+.anim-duration-10  { --anim-duration: 10s; }
+.anim-duration-20  { --anim-duration: 20s; }
+
+/* Delay helpers */
+.animation-delay-1 { animation-delay: 1s; }
+.animation-delay-2 { animation-delay: 2s; }
+.animation-delay-3 { animation-delay: 3s; }
+.animation-delay-4 { animation-delay: 4s; }

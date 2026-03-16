@@ -1,0 +1,19 @@
+node_modules/
+dist/
+*.local
+
+# DS-Digital font files (require a license — add your own)
+public/fonts/*.ttf
+public/fonts/*.otf
+public/fonts/*.woff
+public/fonts/*.woff2
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo

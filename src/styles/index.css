@@ -1,0 +1,11 @@
+/* ============================================================
+   index.css — Root CSS entry point
+   Import order matters: base → fonts → animations → components → variants → stripe
+   ============================================================ */
+
+@import "./base.css";
+
+@import "./animations.css";
+@import "./stripe-bar.css";
+@import "./components.css";
+@import "./variants.css";
