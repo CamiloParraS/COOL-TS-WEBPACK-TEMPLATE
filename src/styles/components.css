@@ -445,7 +445,7 @@
     position: relative;
     min-height: 100px;
     min-width: 100px;
-    background-image: url("../../static/images/warning_hex_red.png");
+    background-image: url("../../static/images/warning_hex_red.webp");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -485,7 +485,7 @@
     position: relative;
     min-height: 80px;
     min-width: 50px;
-    background-image: url("../../static/images/warning_tsunami_yellow.png");
+    background-image: url("../../static/images/warning_tsunami_yellow.webp");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
