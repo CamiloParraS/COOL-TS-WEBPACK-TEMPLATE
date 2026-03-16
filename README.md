@@ -1,149 +1,121 @@
-# EWS UI Template — TypeScript + Webpack
+# EWS UI Template
 
-A framework-agnostic template that replicates the **EWS Concept** design system
-(dark military dashboard, Neon Genesis Evangelion / NERV aesthetic) using
-pure CSS + TypeScript.
+Dark military dashboard design system - Neon Genesis Evangelion / NERV aesthetic.
+Pure CSS + TypeScript. No UI framework required.
+
+```
+black background · orange (#FFAA00) for info · red (#E60003) for alerts
+```
 
 ## Stack
 
-| Tool | Role |
-|---|---|
-| TypeScript 5 | Type-safe JS |
-| Webpack 5 | Bundler + dev server |
-| css-loader | CSS modules pipeline |
-| html-webpack-plugin | Injects bundle into HTML |
-| mini-css-extract-plugin | Extracts CSS in production |
-
-No UI framework required — the design is CSS-only.
+- **TypeScript 5** + **Webpack 5**
+- `css-loader`, `style-loader`, `mini-css-extract-plugin`, `html-webpack-plugin`
 
 ## Quick Start
 
 ```bash
 npm install
-npm run dev    # starts dev server on http://localhost:3000
-npm run build  # production build → dist/
+npm run dev      # http://localhost:3000
+npm run build    # → dist/
 ```
 
 ## Project Structure
 
 ```
 src/
-├── index.html          # HTML template
+├── index.html
 ├── styles/
-│   ├── index.css       # Root import (imports all modules in order)
-│   ├── base.css        # CSS variables (:root) + body reset
-│   ├── fonts.css       # Roboto Condensed (Google) + DS-Digital (local)
-│   ├── animations.css  # @keyframes + utility classes
-│   ├── stripe-bar.css  # Animated diagonal stripe pattern
-│   ├── components.css  # Cards, borders, hex, parallelogram, markers
-│   └── variants.css    # .ews-text-*, .ews-btn-*, .ews-input
+│   ├── index.css          # root import (controls load order)
+│   ├── base.css           # CSS variables + body reset
+│   ├── fonts.css          # Roboto Condensed (Google) + DS-Digital (local)
+│   ├── animations.css     # @keyframes + utility classes
+│   ├── stripe-bar.css     # animated diagonal hazard stripes
+│   ├── components.css     # cards, borders, shapes, markers
+│   ├── variants.css       # .ews-text-*, .ews-btn-*, .ews-input, etc.
+│   ├── hex-grid.css       # honeycomb layout styles
+│   ├── hex-shape.css      # hex SVG background helpers
+│   └── status.css         # status node / rib-cage layout
 └── ts/
-    ├── index.ts        # Entry point — imports CSS + wires demo
-    ├── StripeBar.ts    # Stripe bar component class
-    ├── Card.ts         # Card panel component class
-    └── HexGrid.ts      # Honeycomb layout engine
+    ├── index.ts           # entry point + live showcase
+    ├── StripeBar.ts       # animated stripe component
+    ├── Card.ts            # card panel component
+    └── HexGrid.ts         # honeycomb layout engine
 public/
-└── fonts/              # Drop DS-Digital .ttf files here
-    ├── ds_digital.ttf
-    ├── ds_digitalbold.ttf
-    ├── ds_digitalital.ttf
-    └── ds_digitalboldital.ttf
+└── fonts/                 # drop DS-Digital .ttf files here
+static/
+└── images/                # optional image assets for cards, backgrounds, etc.
 ```
 
-## CSS Design Tokens (base.css)
+## CSS Tokens
 
-| Variable | Value | Purpose |
+| Variable | Value | Use |
 |---|---|---|
-| `--orange` | `#FFAA00` | Primary info color |
-| `--red` | `#E60003` | Danger / alert color |
-| `--text-color` | `#FFAA00` | Default body text |
-| `--danger-text-color` | `#FF2233` | Alert text |
-| `--glow-rgb` | `255, 102, 0` | Orange glow (box-shadow) |
-| `--danger-glow-rgb` | `255, 0, 0` | Red glow |
-| `--gutter-size` | `8px` | Border-radius unit |
+| `--orange` | `#FFAA00` | info / normal state |
+| `--red` | `#E60003` | danger / alert state |
+| `--text-color` | `#FFAA00` | default body text |
+| `--danger-text-color` | `#FF2233` | alert text |
+| `--glow-rgb` | `255, 102, 0` | orange glow |
+| `--danger-glow-rgb` | `255, 0, 0` | red glow |
+| `--gutter-size` | `8px` | border-radius unit |
 
-## Key CSS Classes
+## Key Classes
 
-### Cards & Borders
-- `.ews-card` — base panel (black bg)
-- `.bordered` — 3px orange border
-- `.bordered-red` — 3px red border
-- `.ews-card-header` / `.ews-card-content` / `.ews-card-footer`
-- `.custom-scrollbar` — dark track + red thumb
+**Cards** — `.ews-card` `.bordered` `.bordered-red` `.ews-card-header` `.ews-card-content` `.ews-card-footer` `.ews-card-float`
 
-### Typography
-- `.ews-text` — Roboto Condensed, uppercase, orange
-- `.ews-text-glow` — text-shadow glow
-- `.ews-text-digital` — DS-Digital LCD font
-- `.ews-text-blink` — blinking text
-- `.ews-title` — large display heading
+**Typography** — `.ews-text` `.ews-text-glow` `.ews-text-digital` `.ews-text-blink` `.ews-title` `.text-glow` `.text-glow-red`
 
-### Buttons
-- `.ews-btn` — base (always combine with a variant)
-- `.ews-btn-primary` / `.ews-btn-danger` / `.ews-btn-outline` / `.ews-btn-outline-danger`
-- `.ews-btn-ghost` / `.ews-btn-skew` / `.ews-btn-alert`
-- `.ews-btn-sm` / `.ews-btn-lg`
+**Buttons** — `.ews-btn` + `.ews-btn-primary` / `.ews-btn-danger` / `.ews-btn-outline` / `.ews-btn-outline-danger` / `.ews-btn-ghost` / `.ews-btn-skew` / `.ews-btn-alert` + `.ews-btn-sm` / `.ews-btn-lg`
 
-### Inputs
-- `.ews-input` / `.ews-input.danger` / `.ews-input.underline`
-- `.ews-select` / `.ews-textarea`
-- `.toggle-switch` + `.toggle-slider`
+**Inputs** — `.ews-input` `.ews-select` `.ews-textarea` — add `.danger` or `.underline` as modifiers. `.toggle-switch` + `.toggle-slider` for toggles.
 
-### Animations
-- `.blink` / `.blink-fast`
-- `.show-pop-up` / `.close-pop-up`
-- `.slide-in-left` / `.fade-in` / `.vertical-reveal`
-- `.glow-effect`
-- `.loop-stripe` / `.loop-stripe-reverse`
-- `.animation-delay-1/2/3/4`
-- `.anim-duration-5/10/20`
+**Shapes** — `.parallelogram` `.hex-flat-top` `.hex-pointy-top` `.hex-hive` `.hex-cell-flat` `.hex-status-cell` `.hex-stripe-cell` `.hex-shape`
 
-### Shapes
-- `.parallelogram` / `.parallelogram.danger`
-- `.hex-flat-top` / `.hex-pointy-top` (clip-path)
-- `.hex-hive` / `.hex-hive.bg-hex` / `.hex-hive.hex-danger` / `.hex-hive.hex-warn`
+**Animations** — `.blink` `.blink-fast` `.fade-in` `.slide-in-left` `.slide-fade-in` `.glow-effect` `.loop-stripe` `.loop-stripe-reverse` `.animation-delay-1/2/3/4` `.anim-duration-5/10/20`
 
-## TypeScript Classes
+**Misc** — `.scanline` `.neon-glow` `.neon-box` `.backgroundline` `.loader` `.circles` `.overlay-bg`
 
-### `StripeBar`
+## TypeScript Components
+
+**`StripeBar`**
 ```ts
 import { StripeBar } from "./ts/StripeBar";
 
 const bar = new StripeBar({ color: "red", loop: true, reverse: true, duration: 20 });
-headerEl.appendChild(bar.element);
-bar.setContent(myLabel); // optional windowed-text overlay
+bar.setContent(labelEl); // optional windowed-text overlay
+el.appendChild(bar.element);
 ```
 
-### `Card`
+**`Card`**
 ```ts
 import { Card } from "./ts/Card";
 
 const card = new Card({ title: "STATUS", borderColor: "red", stripeHeader: true });
-card.setContent(myContentEl);
+card.setContent(bodyEl);
 card.setFooter("LAST UPDATE: 00:04:12");
 document.body.appendChild(card.element);
 ```
 
-### `HexGrid`
+**`HexGrid`**
 ```ts
 import { HexGrid } from "./ts/HexGrid";
 
+// Automatically re-layouts on resize / child mutations
 const grid = new HexGrid(containerEl, { variant: "pointy", hexWidth: 72, hexHeight: 83, gap: 4 });
-// Automatically re-layouts on container resize
+grid.destroy(); // disconnect observers when done
 ```
 
-## Adding DS-Digital Font
+## DS-Digital Font
 
-The DS-Digital font is not included (it requires a license). Options:
-1. Purchase from [dafont.com/ds-digital.font](https://www.dafont.com/ds-digital.font) and place `.ttf` files in `public/fonts/`.
-2. Use any monospaced LCD-style font and update `fonts.css`.
-3. Skip it entirely — the design system works fine without it.
+Not included — requires a license. Options:
 
-## Design Rules (from the style guide)
+1. Purchase from [dafont.com/ds-digital.font](https://www.dafont.com/ds-digital.font) and place `.TTF` files in `public/fonts/`.
+2. Swap in any monospaced LCD-style font and update `fonts.css`.
+3. Skip it — the system works fine without it, falling back to system monospace.
 
-- **Never** introduce any background color other than black (`#000000`)
-- **Never** use green or blue as primary UI colors
-- Orange = informational / normal state
-- Red = danger / alert state
-- All animations communicate live data — never purely decorative
-- Every deviation from black/orange/red weakens the aesthetic
+## Design Rules
+
+- Background is always `#000000` — no exceptions
+- Orange = informational / normal · Red = danger / alert
+- No green, no blue as primary UI colors
+- Animations communicate live data — never purely decorative
