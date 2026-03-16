@@ -4,6 +4,7 @@ dist/
 
 # DS-Digital font files (require a license — add your own)
 public/fonts/*.ttf
+public/fonts/*.TTF
 public/fonts/*.otf
 public/fonts/*.woff
 public/fonts/*.woff2
