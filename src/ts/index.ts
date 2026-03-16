@@ -381,16 +381,45 @@ const animDefs: Array<[string, string]> = [
   ["animation-fast slide-in-left ews-text", "SLIDE FAST"],
 ];
 
+animSection.appendChild(animGrid);
+root.appendChild(animSection);
+
+// Helper to replay a CSS animation on an element
+function replayAnimation(el: HTMLElement) {
+  const classes = [...el.classList];
+  // Remove all animation-related classes
+  const animClasses = classes.filter((c) =>
+    animDefs.some(([cls]) => cls.split(" ").includes(c)),
+  );
+  animClasses.forEach((c) => el.classList.remove(c));
+
+  // Force reflow — this is the key step
+  void el.offsetWidth;
+
+  // Re-add them
+  animClasses.forEach((c) => el.classList.add(c));
+}
+
 animDefs.forEach(([cls, txt]) => {
   const d = document.createElement("div");
   d.className = cls;
-  d.style.cssText = "padding:8px 12px;font-size:0.65rem;";
+  d.style.cssText = "padding:8px 12px;font-size:0.65rem;cursor:pointer;";
   d.textContent = txt;
+
+  // Replay on click
+  d.addEventListener("click", () => replayAnimation(d));
+
+  // Also auto-replay non-infinite animations on a loop
+  const isInfinite =
+    cls.includes("blink") || cls.includes("loop") || cls.includes("glow");
+  if (!isInfinite) {
+    d.addEventListener("animationend", () => {
+      setTimeout(() => replayAnimation(d), 2000); // pause, then replay
+    });
+  }
+
   animGrid.appendChild(d);
 });
-
-animSection.appendChild(animGrid);
-root.appendChild(animSection);
 
 // ─────────────────────────────────────────────────────────────────────────────
 // § 10. PARALLELOGRAMS
